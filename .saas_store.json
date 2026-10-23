@@ -1,0 +1,836 @@
+{
+  "clients": {
+    "client-default": {
+      "id": "client-default",
+      "name": "Default Client Organization",
+      "email": "client@default.com",
+      "status": "active",
+      "startDate": "2026-01-01T00:00:00.000Z",
+      "expiresAt": "2027-12-31T00:00:00.000Z",
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    "client-606392e7": {
+      "id": "client-606392e7",
+      "name": "Baraka Sinergi",
+      "email": "barakasinergi.id@gmail.com",
+      "phone": "",
+      "status": "active",
+      "startDate": "2026-10-16T03:25:21.944Z",
+      "expiresAt": "2026-11-15T03:25:21.944Z",
+      "createdAt": "2026-10-16T03:25:21.944Z",
+      "updatedAt": "2026-10-16T03:25:21.944Z"
+    },
+    "client-f41dc5f0": {
+      "id": "client-f41dc5f0",
+      "name": "Client A - Eka Event Ltd",
+      "email": "admin@clienta.com",
+      "status": "active",
+      "startDate": "2026-10-16T03:26:13.787Z",
+      "expiresAt": "2026-11-15T03:26:13.787Z",
+      "createdAt": "2026-10-16T03:26:13.787Z",
+      "updatedAt": "2026-10-16T03:26:13.787Z"
+    },
+    "client-cfa40991": {
+      "id": "client-cfa40991",
+      "name": "Client Expired Ltd",
+      "email": "admin@expired.com",
+      "status": "active",
+      "startDate": "2026-10-16T03:26:13.790Z",
+      "expiresAt": "2026-10-15T03:26:13.790Z",
+      "createdAt": "2026-10-16T03:26:13.790Z",
+      "updatedAt": "2026-10-16T03:26:13.790Z"
+    },
+    "client-c173ab44": {
+      "id": "client-c173ab44",
+      "name": "Client A - Eka Event Ltd",
+      "email": "admin@clienta.com",
+      "status": "active",
+      "startDate": "2026-10-16T04:15:14.073Z",
+      "expiresAt": "2026-11-15T04:15:14.073Z",
+      "createdAt": "2026-10-16T04:15:14.073Z",
+      "updatedAt": "2026-10-16T04:15:14.073Z"
+    },
+    "client-a46314c4": {
+      "id": "client-a46314c4",
+      "name": "Client Expired Ltd",
+      "email": "admin@expired.com",
+      "status": "active",
+      "startDate": "2026-10-16T04:15:14.077Z",
+      "expiresAt": "2026-10-15T04:15:14.077Z",
+      "createdAt": "2026-10-16T04:15:14.077Z",
+      "updatedAt": "2026-10-16T04:15:14.077Z"
+    },
+    "client-c02adf03": {
+      "id": "client-c02adf03",
+      "name": "Client A - Eka Event Ltd",
+      "email": "admin@clienta.com",
+      "status": "active",
+      "startDate": "2026-10-16T04:20:33.094Z",
+      "expiresAt": "2026-11-15T04:20:33.094Z",
+      "createdAt": "2026-10-16T04:20:33.094Z",
+      "updatedAt": "2026-10-16T04:20:33.094Z"
+    },
+    "client-b3217bde": {
+      "id": "client-b3217bde",
+      "name": "Client Expired Ltd",
+      "email": "admin@expired.com",
+      "status": "active",
+      "startDate": "2026-10-16T04:20:33.097Z",
+      "expiresAt": "2026-10-15T04:20:33.097Z",
+      "createdAt": "2026-10-16T04:20:33.097Z",
+      "updatedAt": "2026-10-16T04:20:33.097Z"
+    },
+    "client-6597036d": {
+      "id": "client-6597036d",
+      "name": "Client A - Eka Event Ltd",
+      "email": "admin@clienta.com",
+      "status": "active",
+      "startDate": "2026-10-16T04:24:57.934Z",
+      "expiresAt": "2026-11-15T04:24:57.934Z",
+      "createdAt": "2026-10-16T04:24:57.934Z",
+      "updatedAt": "2026-10-16T04:24:57.934Z"
+    },
+    "client-e6bcca82": {
+      "id": "client-e6bcca82",
+      "name": "Client Expired Ltd",
+      "email": "admin@expired.com",
+      "status": "active",
+      "startDate": "2026-10-16T04:24:57.938Z",
+      "expiresAt": "2026-10-15T04:24:57.938Z",
+      "createdAt": "2026-10-16T04:24:57.938Z",
+      "updatedAt": "2026-10-16T04:24:57.938Z"
+    },
+    "client-ff9291c8": {
+      "id": "client-ff9291c8",
+      "name": "baraka 3",
+      "email": "contohbaraka@baraka.id",
+      "phone": "",
+      "status": "active",
+      "startDate": "2026-10-16T06:22:36.707Z",
+      "expiresAt": "2027-10-16T06:22:36.707Z",
+      "createdAt": "2026-10-16T06:22:36.707Z",
+      "updatedAt": "2026-10-16T06:22:36.707Z"
+    },
+    "client-303a7e9f": {
+      "id": "client-303a7e9f",
+      "name": "Client A - Eka Event Ltd",
+      "email": "admin@clienta.com",
+      "status": "active",
+      "startDate": "2026-10-16T06:26:18.351Z",
+      "expiresAt": "2026-11-15T06:26:18.351Z",
+      "createdAt": "2026-10-16T06:26:18.351Z",
+      "updatedAt": "2026-10-16T06:26:18.351Z"
+    },
+    "client-9a2fff78": {
+      "id": "client-9a2fff78",
+      "name": "Client Expired Ltd",
+      "email": "admin@expired.com",
+      "status": "active",
+      "startDate": "2026-10-16T06:26:18.354Z",
+      "expiresAt": "2026-10-15T06:26:18.354Z",
+      "createdAt": "2026-10-16T06:26:18.354Z",
+      "updatedAt": "2026-10-16T06:26:18.354Z"
+    },
+    "client-3e6d4cce": {
+      "id": "client-3e6d4cce",
+      "name": "Client A - Eka Event Ltd",
+      "email": "admin@clienta.com",
+      "status": "active",
+      "startDate": "2026-10-16T06:30:37.560Z",
+      "expiresAt": "2026-11-15T06:30:37.560Z",
+      "createdAt": "2026-10-16T06:30:37.560Z",
+      "updatedAt": "2026-10-16T06:30:37.560Z"
+    },
+    "client-2b9fab88": {
+      "id": "client-2b9fab88",
+      "name": "Client Expired Ltd",
+      "email": "admin@expired.com",
+      "status": "active",
+      "startDate": "2026-10-16T06:30:37.564Z",
+      "expiresAt": "2026-10-15T06:30:37.564Z",
+      "createdAt": "2026-10-16T06:30:37.564Z",
+      "updatedAt": "2026-10-16T06:30:37.564Z"
+    },
+    "client-74ceecce": {
+      "id": "client-74ceecce",
+      "name": "Client A - Eka Event Ltd",
+      "email": "admin@clienta.com",
+      "status": "active",
+      "startDate": "2026-10-16T06:33:20.487Z",
+      "expiresAt": "2026-11-15T06:33:20.487Z",
+      "createdAt": "2026-10-16T06:33:20.487Z",
+      "updatedAt": "2026-10-16T06:33:20.487Z"
+    },
+    "client-7ea4083f": {
+      "id": "client-7ea4083f",
+      "name": "Client Expired Ltd",
+      "email": "admin@expired.com",
+      "status": "active",
+      "startDate": "2026-10-16T06:33:20.490Z",
+      "expiresAt": "2026-10-15T06:33:20.490Z",
+      "createdAt": "2026-10-16T06:33:20.490Z",
+      "updatedAt": "2026-10-16T06:33:20.490Z"
+    },
+    "client-23f65172": {
+      "id": "client-23f65172",
+      "name": "Client A - Eka Event Ltd",
+      "email": "admin@clienta.com",
+      "status": "active",
+      "startDate": "2026-10-16T10:53:42.442Z",
+      "expiresAt": "2026-11-15T10:53:42.442Z",
+      "createdAt": "2026-10-16T10:53:42.442Z",
+      "updatedAt": "2026-10-16T10:53:42.442Z"
+    },
+    "client-23536a89": {
+      "id": "client-23536a89",
+      "name": "Client Expired Ltd",
+      "email": "admin@expired.com",
+      "status": "active",
+      "startDate": "2026-10-16T10:53:42.445Z",
+      "expiresAt": "2026-10-15T10:53:42.445Z",
+      "createdAt": "2026-10-16T10:53:42.445Z",
+      "updatedAt": "2026-10-16T10:53:42.445Z"
+    },
+    "client-c80058b5": {
+      "id": "client-c80058b5",
+      "name": "Client A - Eka Event Ltd",
+      "email": "admin@clienta.com",
+      "status": "active",
+      "startDate": "2026-10-16T10:55:30.906Z",
+      "expiresAt": "2026-11-15T10:55:30.906Z",
+      "createdAt": "2026-10-16T10:55:30.906Z",
+      "updatedAt": "2026-10-16T10:55:30.906Z"
+    },
+    "client-47048752": {
+      "id": "client-47048752",
+      "name": "Client Expired Ltd",
+      "email": "admin@expired.com",
+      "status": "active",
+      "startDate": "2026-10-16T10:55:30.914Z",
+      "expiresAt": "2026-10-15T10:55:30.914Z",
+      "createdAt": "2026-10-16T10:55:30.914Z",
+      "updatedAt": "2026-10-16T10:55:30.914Z"
+    },
+    "client-f2118724": {
+      "id": "client-f2118724",
+      "name": "Chandramawa",
+      "email": "chandra@baraka.id",
+      "phone": "081317719967",
+      "status": "active",
+      "startDate": "2026-10-16T10:57:18.747Z",
+      "expiresAt": "2027-05-14T10:57:18.747Z",
+      "createdAt": "2026-10-16T10:57:18.747Z",
+      "updatedAt": "2026-10-16T10:58:16.704Z"
+    },
+    "client-7dd15398": {
+      "id": "client-7dd15398",
+      "name": "Client A - Eka Event Ltd",
+      "email": "admin@clienta.com",
+      "status": "active",
+      "startDate": "2026-10-16T10:58:55.543Z",
+      "expiresAt": "2026-11-15T10:58:55.543Z",
+      "createdAt": "2026-10-16T10:58:55.543Z",
+      "updatedAt": "2026-10-16T10:58:55.543Z"
+    },
+    "client-2092c845": {
+      "id": "client-2092c845",
+      "name": "Client Expired Ltd",
+      "email": "admin@expired.com",
+      "status": "active",
+      "startDate": "2026-10-16T10:58:55.547Z",
+      "expiresAt": "2026-10-15T10:58:55.547Z",
+      "createdAt": "2026-10-16T10:58:55.547Z",
+      "updatedAt": "2026-10-16T10:58:55.547Z"
+    },
+    "client-f70f8248": {
+      "id": "client-f70f8248",
+      "name": "Client A - Eka Event Ltd",
+      "email": "admin@clienta.com",
+      "status": "active",
+      "startDate": "2026-10-16T11:01:20.170Z",
+      "expiresAt": "2026-11-15T11:01:20.170Z",
+      "createdAt": "2026-10-16T11:01:20.170Z",
+      "updatedAt": "2026-10-16T11:01:20.170Z"
+    },
+    "client-85d73d84": {
+      "id": "client-85d73d84",
+      "name": "Client Expired Ltd",
+      "email": "admin@expired.com",
+      "status": "active",
+      "startDate": "2026-10-16T11:01:20.173Z",
+      "expiresAt": "2026-10-15T11:01:20.173Z",
+      "createdAt": "2026-10-16T11:01:20.173Z",
+      "updatedAt": "2026-10-16T11:01:20.173Z"
+    },
+    "client-f9135883": {
+      "id": "client-f9135883",
+      "name": "Client A - Eka Event Ltd",
+      "email": "admin@clienta.com",
+      "status": "active",
+      "startDate": "2026-10-16T11:04:55.632Z",
+      "expiresAt": "2026-11-15T11:04:55.632Z",
+      "createdAt": "2026-10-16T11:04:55.632Z",
+      "updatedAt": "2026-10-16T11:04:55.632Z"
+    },
+    "client-1d34563b": {
+      "id": "client-1d34563b",
+      "name": "Client Expired Ltd",
+      "email": "admin@expired.com",
+      "status": "active",
+      "startDate": "2026-10-16T11:04:55.637Z",
+      "expiresAt": "2026-10-15T11:04:55.637Z",
+      "createdAt": "2026-10-16T11:04:55.637Z",
+      "updatedAt": "2026-10-16T11:04:55.637Z"
+    },
+    "client-5e8b0b4d": {
+      "id": "client-5e8b0b4d",
+      "name": "Client A - Eka Event Ltd",
+      "email": "admin@clienta.com",
+      "status": "active",
+      "startDate": "2026-10-16T11:07:22.437Z",
+      "expiresAt": "2026-11-15T11:07:22.437Z",
+      "createdAt": "2026-10-16T11:07:22.437Z",
+      "updatedAt": "2026-10-16T11:07:22.437Z"
+    },
+    "client-67a32bb5": {
+      "id": "client-67a32bb5",
+      "name": "Client Expired Ltd",
+      "email": "admin@expired.com",
+      "status": "active",
+      "startDate": "2026-10-16T11:07:22.441Z",
+      "expiresAt": "2026-10-15T11:07:22.441Z",
+      "createdAt": "2026-10-16T11:07:22.441Z",
+      "updatedAt": "2026-10-16T11:07:22.441Z"
+    },
+    "client-f3e652f3": {
+      "id": "client-f3e652f3",
+      "name": "Client A - Eka Event Ltd",
+      "email": "admin@clienta.com",
+      "status": "active",
+      "startDate": "2026-10-16T11:16:05.823Z",
+      "expiresAt": "2026-11-15T11:16:05.823Z",
+      "createdAt": "2026-10-16T11:16:05.823Z",
+      "updatedAt": "2026-10-16T11:16:05.823Z"
+    },
+    "client-7e12dfb5": {
+      "id": "client-7e12dfb5",
+      "name": "Client Expired Ltd",
+      "email": "admin@expired.com",
+      "status": "active",
+      "startDate": "2026-10-16T11:16:05.828Z",
+      "expiresAt": "2026-10-15T11:16:05.828Z",
+      "createdAt": "2026-10-16T11:16:05.828Z",
+      "updatedAt": "2026-10-16T11:16:05.828Z"
+    },
+    "client-967ba51e": {
+      "id": "client-967ba51e",
+      "name": "Client A - Eka Event Ltd",
+      "email": "admin@clienta.com",
+      "status": "active",
+      "startDate": "2026-10-16T11:20:42.943Z",
+      "expiresAt": "2026-11-15T11:20:42.943Z",
+      "createdAt": "2026-10-16T11:20:42.943Z",
+      "updatedAt": "2026-10-16T11:20:42.943Z"
+    },
+    "client-3920a0e6": {
+      "id": "client-3920a0e6",
+      "name": "Client Expired Ltd",
+      "email": "admin@expired.com",
+      "status": "active",
+      "startDate": "2026-10-16T11:20:42.947Z",
+      "expiresAt": "2026-10-15T11:20:42.947Z",
+      "createdAt": "2026-10-16T11:20:42.947Z",
+      "updatedAt": "2026-10-16T11:20:42.947Z"
+    },
+    "client-99aaea05": {
+      "id": "client-99aaea05",
+      "name": "Client A - Eka Event Ltd",
+      "email": "admin@clienta.com",
+      "status": "active",
+      "startDate": "2026-10-19T02:19:56.518Z",
+      "expiresAt": "2026-11-18T02:19:56.518Z",
+      "createdAt": "2026-10-19T02:19:56.518Z",
+      "updatedAt": "2026-10-19T02:19:56.518Z"
+    },
+    "client-3042aa06": {
+      "id": "client-3042aa06",
+      "name": "Client Expired Ltd",
+      "email": "admin@expired.com",
+      "status": "active",
+      "startDate": "2026-10-19T02:19:56.523Z",
+      "expiresAt": "2026-10-18T02:19:56.523Z",
+      "createdAt": "2026-10-19T02:19:56.523Z",
+      "updatedAt": "2026-10-19T02:19:56.523Z"
+    },
+    "client-bb6029b3": {
+      "id": "client-bb6029b3",
+      "name": "Client A - Eka Event Ltd",
+      "email": "admin@clienta.com",
+      "status": "active",
+      "startDate": "2026-10-19T05:33:57.067Z",
+      "expiresAt": "2026-11-18T05:33:57.067Z",
+      "createdAt": "2026-10-19T05:33:57.067Z",
+      "updatedAt": "2026-10-19T05:33:57.067Z"
+    },
+    "client-796498b9": {
+      "id": "client-796498b9",
+      "name": "Client Expired Ltd",
+      "email": "admin@expired.com",
+      "status": "active",
+      "startDate": "2026-10-19T05:33:57.074Z",
+      "expiresAt": "2026-10-18T05:33:57.074Z",
+      "createdAt": "2026-10-19T05:33:57.074Z",
+      "updatedAt": "2026-10-19T05:33:57.074Z"
+    },
+    "client-60a42420": {
+      "id": "client-60a42420",
+      "name": "Active Client Corp",
+      "email": "active@corp.com",
+      "status": "active",
+      "startDate": "2026-10-19T05:34:04.929Z",
+      "expiresAt": "2026-11-28T05:34:04.929Z",
+      "createdAt": "2026-10-19T05:34:04.929Z",
+      "updatedAt": "2026-10-19T05:34:05.004Z",
+      "notes": "Diaktifkan kembali oleh Super Admin"
+    },
+    "client-edfb5eff": {
+      "id": "client-edfb5eff",
+      "name": "Expired Client Corp",
+      "email": "expired@corp.com",
+      "status": "active",
+      "startDate": "2026-10-19T05:34:04.952Z",
+      "expiresAt": "2026-11-18T05:34:05.007Z",
+      "createdAt": "2026-10-19T05:34:04.952Z",
+      "updatedAt": "2026-10-19T05:34:05.007Z"
+    },
+    "client-c6103266": {
+      "id": "client-c6103266",
+      "name": "Exact Boundary Corp",
+      "email": "boundary@corp.com",
+      "status": "active",
+      "startDate": "2026-10-19T05:34:04.976Z",
+      "expiresAt": "2026-10-19T05:34:03.974Z",
+      "createdAt": "2026-10-19T05:34:04.976Z",
+      "updatedAt": "2026-10-19T05:34:04.983Z"
+    },
+    "client-0dfcfa08": {
+      "id": "client-0dfcfa08",
+      "name": "Broken Data Corp",
+      "email": "broken@corp.com",
+      "status": "active",
+      "startDate": "2026-10-19T05:34:05.013Z",
+      "expiresAt": null,
+      "createdAt": "2026-10-19T05:34:05.013Z",
+      "updatedAt": "2026-10-19T05:34:05.016Z"
+    },
+    "client-5567ade0": {
+      "id": "client-5567ade0",
+      "name": "Client A - Eka Event Ltd",
+      "email": "admin@clienta.com",
+      "status": "active",
+      "startDate": "2026-10-19T05:38:42.805Z",
+      "expiresAt": "2026-11-18T05:38:42.805Z",
+      "createdAt": "2026-10-19T05:38:42.805Z",
+      "updatedAt": "2026-10-19T05:38:42.805Z"
+    },
+    "client-bff933a3": {
+      "id": "client-bff933a3",
+      "name": "Client Expired Ltd",
+      "email": "admin@expired.com",
+      "status": "active",
+      "startDate": "2026-10-19T05:38:42.810Z",
+      "expiresAt": "2026-10-18T05:38:42.810Z",
+      "createdAt": "2026-10-19T05:38:42.810Z",
+      "updatedAt": "2026-10-19T05:38:42.810Z"
+    },
+    "client-89229ace": {
+      "id": "client-89229ace",
+      "name": "Active Client Corp",
+      "email": "active@corp.com",
+      "status": "active",
+      "startDate": "2026-10-19T05:38:44.018Z",
+      "expiresAt": "2026-11-28T05:38:44.018Z",
+      "createdAt": "2026-10-19T05:38:44.018Z",
+      "updatedAt": "2026-10-19T05:38:44.075Z",
+      "notes": "Diaktifkan kembali oleh Super Admin"
+    },
+    "client-d74cb8e3": {
+      "id": "client-d74cb8e3",
+      "name": "Expired Client Corp",
+      "email": "expired@corp.com",
+      "status": "active",
+      "startDate": "2026-10-19T05:38:44.033Z",
+      "expiresAt": "2026-11-18T05:38:44.078Z",
+      "createdAt": "2026-10-19T05:38:44.033Z",
+      "updatedAt": "2026-10-19T05:38:44.078Z"
+    },
+    "client-4b85d99e": {
+      "id": "client-4b85d99e",
+      "name": "Exact Boundary Corp",
+      "email": "boundary@corp.com",
+      "status": "active",
+      "startDate": "2026-10-19T05:38:44.047Z",
+      "expiresAt": "2026-10-19T05:38:43.045Z",
+      "createdAt": "2026-10-19T05:38:44.047Z",
+      "updatedAt": "2026-10-19T05:38:44.053Z"
+    },
+    "client-f3818d90": {
+      "id": "client-f3818d90",
+      "name": "Broken Data Corp",
+      "email": "broken@corp.com",
+      "status": "active",
+      "startDate": "2026-10-19T05:38:44.085Z",
+      "expiresAt": null,
+      "createdAt": "2026-10-19T05:38:44.085Z",
+      "updatedAt": "2026-10-19T05:38:44.088Z"
+    },
+    "client-9d1b41b7": {
+      "id": "client-9d1b41b7",
+      "name": "Client A - Eka Event Ltd",
+      "email": "admin@clienta.com",
+      "status": "active",
+      "startDate": "2026-10-19T12:59:32.425Z",
+      "expiresAt": "2026-11-18T12:59:32.425Z",
+      "createdAt": "2026-10-19T12:59:32.425Z",
+      "updatedAt": "2026-10-19T12:59:32.425Z"
+    },
+    "client-da00b1fa": {
+      "id": "client-da00b1fa",
+      "name": "Client Expired Ltd",
+      "email": "admin@expired.com",
+      "status": "active",
+      "startDate": "2026-10-19T12:59:32.434Z",
+      "expiresAt": "2026-10-18T12:59:32.434Z",
+      "createdAt": "2026-10-19T12:59:32.434Z",
+      "updatedAt": "2026-10-19T12:59:32.434Z"
+    },
+    "client-c149fcbb": {
+      "id": "client-c149fcbb",
+      "name": "Client A - Eka Event Ltd",
+      "email": "admin@clienta.com",
+      "status": "active",
+      "startDate": "2026-10-19T13:15:54.430Z",
+      "expiresAt": "2026-11-18T13:15:54.430Z",
+      "createdAt": "2026-10-19T13:15:54.430Z",
+      "updatedAt": "2026-10-19T13:15:54.430Z"
+    },
+    "client-5ac95e39": {
+      "id": "client-5ac95e39",
+      "name": "Client Expired Ltd",
+      "email": "admin@expired.com",
+      "status": "active",
+      "startDate": "2026-10-19T13:15:54.435Z",
+      "expiresAt": "2026-10-18T13:15:54.435Z",
+      "createdAt": "2026-10-19T13:15:54.435Z",
+      "updatedAt": "2026-10-19T13:15:54.435Z"
+    },
+    "client-979cd893": {
+      "id": "client-979cd893",
+      "name": "Client A - Eka Event Ltd",
+      "email": "admin@clienta.com",
+      "status": "active",
+      "startDate": "2026-10-19T22:08:52.474Z",
+      "expiresAt": "2026-11-18T22:08:52.474Z",
+      "createdAt": "2026-10-19T22:08:52.474Z",
+      "updatedAt": "2026-10-19T22:08:52.474Z"
+    },
+    "client-9c733e03": {
+      "id": "client-9c733e03",
+      "name": "Client Expired Ltd",
+      "email": "admin@expired.com",
+      "status": "active",
+      "startDate": "2026-10-19T22:08:52.478Z",
+      "expiresAt": "2026-10-18T22:08:52.478Z",
+      "createdAt": "2026-10-19T22:08:52.478Z",
+      "updatedAt": "2026-10-19T22:08:52.478Z"
+    }
+  },
+  "adminUsers": {
+    "superadmin@platform.com": {
+      "uid": "sa-79f33eeb068a",
+      "email": "superadmin@platform.com",
+      "displayName": "Platform Owner",
+      "role": "SUPER_ADMIN",
+      "status": "active",
+      "passwordHash": "b129b7bc11c845d52311f43bc1e77b47e452b628ad5b6d066c45dc42b203485e",
+      "createdAt": "2026-10-19T22:08:52.468Z",
+      "updatedAt": "2026-10-19T22:08:52.468Z"
+    },
+    "contohbaraka@baraka.id": {
+      "uid": "usr-d1abcc3da6eb",
+      "email": "contohbaraka@baraka.id",
+      "displayName": "baraka 3 Staff Admin",
+      "role": "ADMIN_CLIENT",
+      "clientId": "client-ff9291c8",
+      "status": "active",
+      "passwordHash": "450c14afe2feabae718080c58a5d20fdb9a3d65e80f1cb984f47f6372ff24973",
+      "createdAt": "2026-10-16T06:22:36.707Z",
+      "updatedAt": "2026-10-16T06:22:36.707Z"
+    },
+    "admin@clienta.com": {
+      "uid": "usr-febbf540489f",
+      "email": "admin@clienta.com",
+      "displayName": "Client A - Eka Event Ltd Staff Admin",
+      "role": "ADMIN_CLIENT",
+      "clientId": "client-979cd893",
+      "status": "active",
+      "passwordHash": "b1a6076ee11e4279e75831287090000052f74ff9222b7b175979bdac3f5d5725",
+      "createdAt": "2026-10-19T22:08:52.474Z",
+      "updatedAt": "2026-10-19T22:08:52.474Z"
+    },
+    "admin@expired.com": {
+      "uid": "usr-b8889acd2acd",
+      "email": "admin@expired.com",
+      "displayName": "Client Expired Ltd Staff Admin",
+      "role": "ADMIN_CLIENT",
+      "clientId": "client-9c733e03",
+      "status": "active",
+      "passwordHash": "0b8c58150cc1525c870db48d7d7b48646df806b882ad46b58e04c0622c1b4778",
+      "createdAt": "2026-10-19T22:08:52.478Z",
+      "updatedAt": "2026-10-19T22:08:52.478Z"
+    },
+    "chandra@baraka.id": {
+      "uid": "usr-33b27a0701d9",
+      "email": "chandra@baraka.id",
+      "displayName": "Chandramawa Staff Admin",
+      "role": "ADMIN_CLIENT",
+      "clientId": "client-f2118724",
+      "status": "active",
+      "passwordHash": "b752ce1e3c0a8caeb05727e2e9eb9a39f11e2812a2d0e2324915b6e9f1cc92fc",
+      "createdAt": "2026-10-16T10:57:18.747Z",
+      "updatedAt": "2026-10-16T10:57:18.747Z"
+    },
+    "superadmin_stage3@platform.com": {
+      "uid": "sa-109a3dbde6ba",
+      "email": "superadmin_stage3@platform.com",
+      "displayName": "Super Admin Stage 3",
+      "role": "SUPER_ADMIN",
+      "status": "active",
+      "passwordHash": "9f63f28c359fbdba22ffa80054c019ed396aedaf72b7a97b2c80c815d766508e",
+      "createdAt": "2026-10-19T05:38:44.003Z",
+      "updatedAt": "2026-10-19T05:38:44.003Z"
+    },
+    "active@corp.com": {
+      "uid": "usr-90d3706c09cc",
+      "email": "active@corp.com",
+      "displayName": "Active Client Corp Staff Admin",
+      "role": "ADMIN_CLIENT",
+      "clientId": "client-89229ace",
+      "status": "active",
+      "passwordHash": "d8fabc5f791c7bdcf813c86fb4035afdef1c4dd985cc606114b8cbbadc925e31",
+      "createdAt": "2026-10-19T05:38:44.018Z",
+      "updatedAt": "2026-10-19T05:38:44.018Z"
+    },
+    "admin@activecorp.com": {
+      "uid": "usr-b4d5a8472643",
+      "email": "admin@activecorp.com",
+      "displayName": "admin@activecorp.com",
+      "role": "ADMIN_CLIENT",
+      "clientId": "client-89229ace",
+      "status": "active",
+      "passwordHash": "cc5886ec2560b051f738f76fb0213ecf43e6f845ea9c045e1174e377711db900",
+      "createdAt": "2026-10-19T05:38:44.024Z",
+      "updatedAt": "2026-10-19T05:38:44.024Z"
+    },
+    "expired@corp.com": {
+      "uid": "usr-427b2b4ba9c3",
+      "email": "expired@corp.com",
+      "displayName": "Expired Client Corp Staff Admin",
+      "role": "ADMIN_CLIENT",
+      "clientId": "client-d74cb8e3",
+      "status": "active",
+      "passwordHash": "6f09d2fd062cdf50491bc513e61a26413605fc39d63ef428438b3202667186b2",
+      "createdAt": "2026-10-19T05:38:44.033Z",
+      "updatedAt": "2026-10-19T05:38:44.033Z"
+    },
+    "admin@expiredcorp.com": {
+      "uid": "usr-bf4fca6b1682",
+      "email": "admin@expiredcorp.com",
+      "displayName": "admin@expiredcorp.com",
+      "role": "ADMIN_CLIENT",
+      "clientId": "client-d74cb8e3",
+      "status": "active",
+      "passwordHash": "cc5886ec2560b051f738f76fb0213ecf43e6f845ea9c045e1174e377711db900",
+      "createdAt": "2026-10-19T05:38:44.038Z",
+      "updatedAt": "2026-10-19T05:38:44.038Z"
+    },
+    "boundary@corp.com": {
+      "uid": "usr-7e91c0a10577",
+      "email": "boundary@corp.com",
+      "displayName": "Exact Boundary Corp Staff Admin",
+      "role": "ADMIN_CLIENT",
+      "clientId": "client-4b85d99e",
+      "status": "active",
+      "passwordHash": "096fc54b1a402f0707edc741f65fa37a04fc2398a5cb7ca03a292ef9b6bb45ca",
+      "createdAt": "2026-10-19T05:38:44.047Z",
+      "updatedAt": "2026-10-19T05:38:44.047Z"
+    },
+    "admin@boundarycorp.com": {
+      "uid": "usr-486394e11f1a",
+      "email": "admin@boundarycorp.com",
+      "displayName": "admin@boundarycorp.com",
+      "role": "ADMIN_CLIENT",
+      "clientId": "client-4b85d99e",
+      "status": "active",
+      "passwordHash": "cc5886ec2560b051f738f76fb0213ecf43e6f845ea9c045e1174e377711db900",
+      "createdAt": "2026-10-19T05:38:44.058Z",
+      "updatedAt": "2026-10-19T05:38:44.058Z"
+    },
+    "broken@corp.com": {
+      "uid": "usr-d9aa78897fba",
+      "email": "broken@corp.com",
+      "displayName": "Broken Data Corp Staff Admin",
+      "role": "ADMIN_CLIENT",
+      "clientId": "client-f3818d90",
+      "status": "active",
+      "passwordHash": "1a54c1482f9cba5c7798d6caf00f6b67ce718234f0dfc480325a3bd1ab9aaaf2",
+      "createdAt": "2026-10-19T05:38:44.085Z",
+      "updatedAt": "2026-10-19T05:38:44.085Z"
+    }
+  },
+  "events": {
+    "evt-68b39b63": {
+      "title": "Tampered Event",
+      "subtitle": "Should belong to Client A regardless of body",
+      "eventType": "orienteering",
+      "clientId": "client-bb6029b3",
+      "id": "evt-68b39b63",
+      "createdAt": "2026-10-19T05:33:57.105Z"
+    },
+    "evt-95994302": {
+      "title": "Tampered Event",
+      "subtitle": "Should belong to Client A regardless of body",
+      "eventType": "orienteering",
+      "clientId": "client-5567ade0",
+      "id": "evt-95994302",
+      "createdAt": "2026-10-19T05:38:42.836Z"
+    }
+  },
+  "subscriptionHistory": {
+    "client-f2118724": [
+      {
+        "id": "sub-484eb455bc93",
+        "clientId": "client-f2118724",
+        "extendedByUid": "sa-6b1c1c287249",
+        "extendedByEmail": "superadmin@platform.com",
+        "previousExpiresAt": "2026-11-15T10:57:18.747Z",
+        "newExpiresAt": "2027-05-14T10:57:18.747Z",
+        "extensionDays": 180,
+        "paymentAmount": 1500000,
+        "paymentRef": "TRX-296642",
+        "paymentDate": "2026-10-16T10:58:16.704Z",
+        "notes": "Perpanjangan langganan +180 hari (Manual Transfer)",
+        "timestamp": "2026-10-16T10:58:16.704Z"
+      }
+    ],
+    "client-60a42420": [
+      {
+        "id": "sub-07a54853b4b9",
+        "clientId": "client-60a42420",
+        "extendedByUid": "sa-3e05cc9bf496",
+        "extendedByEmail": "superadmin_stage3@platform.com",
+        "previousExpiresAt": "2026-10-29T05:34:04.929Z",
+        "newExpiresAt": "2026-10-29T05:34:04.929Z",
+        "extensionDays": 0,
+        "notes": "Ditangguhkan karena verifikasi pembayaran pending",
+        "timestamp": "2026-10-19T05:34:04.996Z"
+      },
+      {
+        "id": "sub-38fbc1031771",
+        "clientId": "client-60a42420",
+        "extendedByUid": "sa-3e05cc9bf496",
+        "extendedByEmail": "superadmin_stage3@platform.com",
+        "previousExpiresAt": "2026-10-29T05:34:04.929Z",
+        "newExpiresAt": "2026-10-29T05:34:04.929Z",
+        "extensionDays": 0,
+        "notes": "Diaktifkan kembali oleh Super Admin",
+        "timestamp": "2026-10-19T05:34:05.002Z"
+      },
+      {
+        "id": "sub-394370e0c55e",
+        "clientId": "client-60a42420",
+        "extendedByUid": "sa-3e05cc9bf496",
+        "extendedByEmail": "superadmin_stage3@platform.com",
+        "previousExpiresAt": "2026-10-29T05:34:04.929Z",
+        "newExpiresAt": "2026-11-28T05:34:04.929Z",
+        "extensionDays": 30,
+        "paymentAmount": 1500000,
+        "paymentRef": "TRX-MANUAL-88219",
+        "paymentDate": "2026-10-19T05:34:05.004Z",
+        "notes": "Pembayaran manual transfer BCA 30 hari tambahan",
+        "timestamp": "2026-10-19T05:34:05.004Z"
+      }
+    ],
+    "client-edfb5eff": [
+      {
+        "id": "sub-a72313182401",
+        "clientId": "client-edfb5eff",
+        "extendedByUid": "sa-3e05cc9bf496",
+        "extendedByEmail": "superadmin_stage3@platform.com",
+        "previousExpiresAt": "2026-10-14T05:34:04.952Z",
+        "newExpiresAt": "2026-11-18T05:34:05.007Z",
+        "extensionDays": 30,
+        "paymentAmount": 1500000,
+        "paymentRef": "TRX-MANUAL-99201",
+        "paymentDate": "2026-10-19T05:34:05.007Z",
+        "notes": "Perpanjangan akun kedaluwarsa via Kasir",
+        "timestamp": "2026-10-19T05:34:05.007Z"
+      }
+    ],
+    "client-89229ace": [
+      {
+        "id": "sub-fc042dd3c53c",
+        "clientId": "client-89229ace",
+        "extendedByUid": "sa-109a3dbde6ba",
+        "extendedByEmail": "superadmin_stage3@platform.com",
+        "previousExpiresAt": "2026-10-29T05:38:44.018Z",
+        "newExpiresAt": "2026-10-29T05:38:44.018Z",
+        "extensionDays": 0,
+        "notes": "Ditangguhkan karena verifikasi pembayaran pending",
+        "timestamp": "2026-10-19T05:38:44.066Z"
+      },
+      {
+        "id": "sub-8264c24e9aae",
+        "clientId": "client-89229ace",
+        "extendedByUid": "sa-109a3dbde6ba",
+        "extendedByEmail": "superadmin_stage3@platform.com",
+        "previousExpiresAt": "2026-10-29T05:38:44.018Z",
+        "newExpiresAt": "2026-10-29T05:38:44.018Z",
+        "extensionDays": 0,
+        "notes": "Diaktifkan kembali oleh Super Admin",
+        "timestamp": "2026-10-19T05:38:44.072Z"
+      },
+      {
+        "id": "sub-40f99f10103f",
+        "clientId": "client-89229ace",
+        "extendedByUid": "sa-109a3dbde6ba",
+        "extendedByEmail": "superadmin_stage3@platform.com",
+        "previousExpiresAt": "2026-10-29T05:38:44.018Z",
+        "newExpiresAt": "2026-11-28T05:38:44.018Z",
+        "extensionDays": 30,
+        "paymentAmount": 1500000,
+        "paymentRef": "TRX-MANUAL-88219",
+        "paymentDate": "2026-10-19T05:38:44.075Z",
+        "notes": "Pembayaran manual transfer BCA 30 hari tambahan",
+        "timestamp": "2026-10-19T05:38:44.075Z"
+      }
+    ],
+    "client-d74cb8e3": [
+      {
+        "id": "sub-e265c77bf7bd",
+        "clientId": "client-d74cb8e3",
+        "extendedByUid": "sa-109a3dbde6ba",
+        "extendedByEmail": "superadmin_stage3@platform.com",
+        "previousExpiresAt": "2026-10-14T05:38:44.033Z",
+        "newExpiresAt": "2026-11-18T05:38:44.078Z",
+        "extensionDays": 30,
+        "paymentAmount": 1500000,
+        "paymentRef": "TRX-MANUAL-99201",
+        "paymentDate": "2026-10-19T05:38:44.078Z",
+        "notes": "Perpanjangan akun kedaluwarsa via Kasir",
+        "timestamp": "2026-10-19T05:38:44.078Z"
+      }
+    ]
+  }
+}

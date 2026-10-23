@@ -1,0 +1,6 @@
+{
+  "name": "Orienteering & Amazing Race Platform",
+  "description": "Platform manajemen dan pelaksanaan kegiatan orienteering, amazing race, outbound, dan game QR code untuk tim dan korporat.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

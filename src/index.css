@@ -1,0 +1,61 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+@media print {
+  @page {
+    size: auto;
+    margin: 8mm;
+  }
+
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* When batch QR or BIB modal is active for printing, hide all other UI */
+  body.printing-batch-qr *,
+  body.printing-batch-bib * {
+    visibility: hidden;
+  }
+
+  body.printing-batch-qr #qr-batch-print-portal,
+  body.printing-batch-qr #qr-batch-print-portal *,
+  body.printing-batch-bib #bib-batch-print-portal,
+  body.printing-batch-bib #bib-batch-print-portal * {
+    visibility: visible;
+  }
+
+  body.printing-batch-qr #qr-batch-print-portal,
+  body.printing-batch-bib #bib-batch-print-portal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #ffffff !important;
+  }
+
+  .no-print,
+  .print-hidden {
+    display: none !important;
+  }
+
+  .print-page-break {
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .print-card-break-avoid {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}

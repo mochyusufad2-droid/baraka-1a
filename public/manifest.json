@@ -1,0 +1,21 @@
+{
+  "name": "Orienteering & Amazing Race Platform",
+  "short_name": "OrienteeringApp",
+  "description": "Platform modern untuk Orienteering, Amazing Race, Outbound, dan Game QR Code Indoor & Outdoor.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b192c",
+  "theme_color": "#0b192c",
+  "icons": [
+    {
+      "src": "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=192&h=192&fit=crop",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=512&h=512&fit=crop",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

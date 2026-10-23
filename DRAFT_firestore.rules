@@ -1,0 +1,198 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default Deny Catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Hardened Global Helpers
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        (request.auth.token.email == 'mochyusuf.ad2@gmail.com' && request.auth.token.email_verified == true) ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    function isValidEvent(data) {
+      return data.keys().hasAll(['id', 'title', 'status', 'eventType']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.title is string && data.title.size() <= 200 &&
+        data.eventType in ['orienteering', 'amazing_race', 'outbound', 'school', 'indoor_qr'] &&
+        data.status in ['active', 'draft', 'completed'];
+    }
+
+    function isValidCheckpoint(data) {
+      return data.keys().hasAll(['id', 'eventId', 'number', 'name', 'qrCodeValue', 'points']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.eventId is string && data.eventId.size() <= 128 &&
+        data.number is number &&
+        data.name is string && data.name.size() <= 100 &&
+        data.qrCodeValue is string && data.qrCodeValue.size() <= 100 &&
+        data.points is number;
+    }
+
+    function isValidTeam(data) {
+      return data.keys().hasAll(['id', 'eventId', 'name', 'bibNumber', 'pinCode', 'points', 'totalScore', 'status']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.eventId is string && data.eventId.size() <= 128 &&
+        data.name is string && data.name.size() <= 100 &&
+        data.bibNumber is string && data.bibNumber.size() <= 20 &&
+        data.pinCode is string && data.pinCode.size() <= 10 &&
+        data.points is number &&
+        data.totalScore is number &&
+        data.status in ['ready', 'racing', 'finished', 'dnf'];
+    }
+
+    function isValidScan(data) {
+      return data.keys().hasAll(['id', 'eventId', 'teamId', 'checkpointId', 'scannedByUid', 'status']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.eventId is string && data.eventId.size() <= 128 &&
+        data.teamId is string && data.teamId.size() <= 128 &&
+        data.checkpointId is string && data.checkpointId.size() <= 128 &&
+        data.scannedByUid == request.auth.uid &&
+        data.status in ['pending', 'verified', 'rejected'];
+    }
+
+    function isValidSubmission(data) {
+      return data.keys().hasAll(['id', 'eventId', 'teamId', 'checkpointId', 'status', 'type']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.eventId is string && data.eventId.size() <= 128 &&
+        data.teamId is string && data.teamId.size() <= 128 &&
+        data.checkpointId is string && data.checkpointId.size() <= 128 &&
+        data.type in ['photo', 'video', 'quiz_answer', 'physical_verification', 'penalty'] &&
+        data.status in ['pending', 'approved', 'rejected'];
+    }
+
+    function isValidScoreEntry(data) {
+      return data.keys().hasAll(['id', 'eventId', 'teamId', 'score', 'type']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.eventId is string && data.eventId.size() <= 128 &&
+        data.teamId is string && data.teamId.size() <= 128 &&
+        data.score is number &&
+        data.type in ['checkpoint', 'bonus', 'penalty', 'manual_judge'];
+    }
+
+    function isValidLog(data) {
+      return data.keys().hasAll(['id', 'eventId', 'time', 'message', 'type']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.eventId is string && data.eventId.size() <= 128 &&
+        data.time is string && data.time.size() <= 50 &&
+        data.message is string && data.message.size() <= 500 &&
+        data.type in ['checkin', 'judge', 'system', 'registration'];
+    }
+
+    function isValidBroadcast(data) {
+      return data.keys().hasAll(['id', 'eventId', 'title', 'message', 'type']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.eventId is string && data.eventId.size() <= 128 &&
+        data.title is string && data.title.size() <= 150 &&
+        data.message is string && data.message.size() <= 1000 &&
+        data.type in ['urgent', 'info', 'weather', 'clue'];
+    }
+
+    function isValidSos(data) {
+      return data.keys().hasAll(['id', 'eventId', 'teamId', 'teamName', 'bibNumber', 'status']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.eventId is string && data.eventId.size() <= 128 &&
+        data.teamId is string && data.teamId.size() <= 128 &&
+        data.teamName is string && data.teamName.size() <= 100 &&
+        data.bibNumber is string && data.bibNumber.size() <= 20 &&
+        data.status in ['active', 'resolved'];
+    }
+
+    // Admins Collection
+    match /admins/{adminId} {
+      allow get: if isSignedIn();
+      allow list: if isAdmin();
+      allow write: if isAdmin() && isValidId(adminId);
+    }
+
+    // Users Collection
+    match /users/{userId} {
+      allow get: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+      allow list: if isAdmin();
+      allow create, update: if isSignedIn() && (request.auth.uid == userId || isAdmin()) && isValidId(userId);
+      allow delete: if isAdmin() && isValidId(userId);
+    }
+
+    // Events Collection
+    match /events/{eventId} {
+      allow get, list: if true;
+      allow create: if isAdmin() && isValidId(eventId) && isValidEvent(request.resource.data);
+      allow update: if isAdmin() && isValidId(eventId) && isValidEvent(request.resource.data);
+      allow delete: if isAdmin() && isValidId(eventId);
+    }
+
+    // Checkpoints Collection
+    match /checkpoints/{checkpointId} {
+      allow get, list: if true;
+      allow create: if isAdmin() && isValidId(checkpointId) && isValidCheckpoint(request.resource.data);
+      allow update: if isAdmin() && isValidId(checkpointId) && isValidCheckpoint(request.resource.data);
+      allow delete: if isAdmin() && isValidId(checkpointId);
+    }
+
+    // Teams Collection
+    match /teams/{teamId} {
+      allow get, list: if true;
+      allow create: if (isAdmin() || isSignedIn()) && isValidId(teamId) && isValidTeam(request.resource.data);
+      allow update: if isValidId(teamId) && isValidTeam(request.resource.data) && (
+        isAdmin() ||
+        (isSignedIn() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['currentCoordinates', 'lastUpdated', 'lastCheckinTimestamp', 'lastPosName', 'currentCheckpointId', 'checkpointsCompleted', 'visitHistory']))
+      );
+      allow delete: if isAdmin() && isValidId(teamId);
+    }
+
+    // Scan Events Collection
+    match /scanEvents/{scanId} {
+      allow get, list: if isSignedIn();
+      allow create: if isSignedIn() && isValidId(scanId) && isValidScan(request.resource.data);
+      allow update: if isAdmin() && isValidId(scanId) && isValidScan(request.resource.data);
+      allow delete: if isAdmin() && isValidId(scanId);
+    }
+
+    // Challenge Submissions Collection
+    match /challengeSubmissions/{submissionId} {
+      allow get, list: if isSignedIn();
+      allow create: if isSignedIn() && isValidId(submissionId) && isValidSubmission(request.resource.data) && request.resource.data.status == 'pending';
+      allow update: if isAdmin() && isValidId(submissionId) && isValidSubmission(request.resource.data);
+      allow delete: if isAdmin() && isValidId(submissionId);
+    }
+
+    // Score Entries Collection
+    match /scoreEntries/{scoreId} {
+      allow get, list: if isSignedIn();
+      allow create, update, delete: if isAdmin() && isValidId(scoreId) && isValidScoreEntry(request.resource.data);
+    }
+
+    // Activity Logs Collection
+    match /activityLogs/{logId} {
+      allow get, list: if true;
+      allow create: if isSignedIn() && isValidId(logId) && isValidLog(request.resource.data);
+      allow update, delete: if isAdmin() && isValidId(logId);
+    }
+
+    // Broadcasts Collection
+    match /broadcasts/{broadcastId} {
+      allow get, list: if true;
+      allow create, update, delete: if isAdmin() && isValidId(broadcastId) && isValidBroadcast(request.resource.data);
+    }
+
+    // SOS Alerts Collection
+    match /sosAlerts/{alertId} {
+      allow get, list: if isSignedIn();
+      allow create: if isSignedIn() && isValidId(alertId) && isValidSos(request.resource.data);
+      allow update: if isSignedIn() && isValidId(alertId) && (isAdmin() || request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status']));
+      allow delete: if isAdmin() && isValidId(alertId);
+    }
+  }
+}

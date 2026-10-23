@@ -1,0 +1,224 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default Deny Catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Hardened Global Helpers
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        (request.auth.token.email == 'mochyusuf.ad2@gmail.com' && request.auth.token.email_verified == true) ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    function isValidEvent(data) {
+      return data.keys().hasAll(['id', 'title', 'status', 'eventType']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.title is string && data.title.size() <= 200 &&
+        data.eventType in ['orienteering', 'amazing_race', 'outbound', 'school', 'indoor_qr'] &&
+        data.status in ['active', 'draft', 'completed'];
+    }
+
+    function isValidCheckpoint(data) {
+      return data.keys().hasAll(['id', 'eventId', 'number', 'name', 'qrCodeValue', 'points']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.eventId is string && data.eventId.size() <= 128 &&
+        data.number is number &&
+        data.name is string && data.name.size() <= 100 &&
+        data.qrCodeValue is string && data.qrCodeValue.size() <= 100 &&
+        data.points is number;
+    }
+
+    function isValidTeam(data) {
+      return data.keys().hasAll(['id', 'eventId', 'name', 'bibNumber', 'points', 'totalScore', 'status']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.eventId is string && data.eventId.size() <= 128 &&
+        data.name is string && data.name.size() <= 100 &&
+        data.bibNumber is string && data.bibNumber.size() <= 20 &&
+        (!('pinCode' in data) || (data.pinCode is string && data.pinCode.size() <= 10)) &&
+        data.points is number &&
+        data.totalScore is number &&
+        data.status in ['ready', 'racing', 'finished', 'dnf'];
+    }
+
+    function isValidScan(data) {
+      return data.keys().hasAll(['id', 'eventId', 'teamId', 'checkpointId', 'scannedByUid', 'status']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.eventId is string && data.eventId.size() <= 128 &&
+        data.teamId is string && data.teamId.size() <= 128 &&
+        data.checkpointId is string && data.checkpointId.size() <= 128 &&
+        data.scannedByUid is string && data.scannedByUid.size() <= 128 &&
+        data.status in ['pending', 'verified', 'rejected'];
+    }
+
+    function isValidSubmission(data) {
+      return data.keys().hasAll(['id', 'eventId', 'teamId', 'checkpointId', 'status', 'type']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.eventId is string && data.eventId.size() <= 128 &&
+        data.teamId is string && data.teamId.size() <= 128 &&
+        data.checkpointId is string && data.checkpointId.size() <= 128 &&
+        data.type in ['photo', 'video', 'quiz_answer', 'physical_verification', 'penalty'] &&
+        data.status in ['pending', 'approved', 'rejected'];
+    }
+
+    function isValidScoreEntry(data) {
+      return data.keys().hasAll(['id', 'eventId', 'teamId', 'score', 'type']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.eventId is string && data.eventId.size() <= 128 &&
+        data.teamId is string && data.teamId.size() <= 128 &&
+        data.score is number &&
+        data.type in ['checkpoint', 'bonus', 'penalty', 'manual_judge'];
+    }
+
+    function isValidLog(data) {
+      return data.keys().hasAll(['id', 'eventId', 'time', 'message', 'type']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.eventId is string && data.eventId.size() <= 128 &&
+        data.time is string && data.time.size() <= 50 &&
+        data.message is string && data.message.size() <= 500 &&
+        data.type in ['checkin', 'judge', 'system', 'registration'];
+    }
+
+    function isValidBroadcast(data) {
+      return data.keys().hasAll(['id', 'eventId', 'title', 'message', 'type']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.eventId is string && data.eventId.size() <= 128 &&
+        data.title is string && data.title.size() <= 150 &&
+        data.message is string && data.message.size() <= 1000 &&
+        data.type in ['urgent', 'info', 'weather', 'clue'];
+    }
+
+    function isValidSos(data) {
+      return data.keys().hasAll(['id', 'eventId', 'teamId', 'teamName', 'bibNumber', 'status']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.eventId is string && data.eventId.size() <= 128 &&
+        data.teamId is string && data.teamId.size() <= 128 &&
+        data.teamName is string && data.teamName.size() <= 100 &&
+        data.bibNumber is string && data.bibNumber.size() <= 20 &&
+        data.status in ['active', 'resolved'];
+    }
+
+    // Admins Collection - protected from public enumeration
+    match /admins/{adminId} {
+      allow get: if isSignedIn();
+      allow list: if isAdmin();
+      allow write: if (isAdmin() || (isSignedIn() && request.auth.token.email == 'mochyusuf.ad2@gmail.com')) && isValidId(adminId);
+    }
+
+    // Users Collection
+    match /users/{userId} {
+      allow get, list: if true;
+      allow create, update: if isValidId(userId);
+      allow delete: if isAdmin() && isValidId(userId);
+    }
+
+    // Events Collection - public viewable, modifications restricted to admin (or initial seed)
+    match /events/{eventId} {
+      allow get, list: if true;
+      allow create: if (isAdmin() || !exists(/databases/$(database)/documents/events/$(eventId))) && isValidId(eventId) && isValidEvent(request.resource.data);
+      allow update: if (isAdmin() || !exists(/databases/$(database)/documents/events/$(eventId))) && isValidId(eventId) && isValidEvent(request.resource.data);
+      allow delete: if isAdmin() && isValidId(eventId);
+    }
+
+    // Checkpoints Collection - public viewable on course, modifications restricted to admin (or initial seed)
+    match /checkpoints/{checkpointId} {
+      allow get, list: if true;
+      allow create: if (isAdmin() || !exists(/databases/$(database)/documents/checkpoints/$(checkpointId))) && isValidId(checkpointId) && isValidCheckpoint(request.resource.data);
+      allow update: if (isAdmin() || !exists(/databases/$(database)/documents/checkpoints/$(checkpointId))) && isValidId(checkpointId) && isValidCheckpoint(request.resource.data) && (resource == null || request.resource.data.eventId == resource.data.eventId);
+      allow delete: if isAdmin() && isValidId(checkpointId);
+    }
+
+    // Teams Collection - public leaderboard and team tracking with score immutability
+    match /teams/{teamId} {
+      allow get, list: if true;
+      allow create: if isValidId(teamId) && isValidTeam(request.resource.data);
+      allow update: if isValidId(teamId) && isValidTeam(request.resource.data) && 
+        request.resource.data.eventId == resource.data.eventId && (
+        isAdmin() || (
+          // Score immutability: clients cannot alter points/totalScore directly without atomic scanEvent
+          request.resource.data.points == resource.data.points &&
+          request.resource.data.totalScore == resource.data.totalScore &&
+          request.resource.data.bonusPoints == resource.data.bonusPoints &&
+          request.resource.data.penaltyPoints == resource.data.penaltyPoints
+        ) || (
+          // Valid atomic check-in transaction: scanEvent must be created simultaneously
+          request.resource.data.currentCheckpointId != null &&
+          existsAfter(/databases/$(database)/documents/scanEvents/$('scan_' + teamId + '_' + request.resource.data.currentCheckpointId)) &&
+          request.resource.data.bonusPoints == resource.data.bonusPoints &&
+          request.resource.data.penaltyPoints == resource.data.penaltyPoints &&
+          request.resource.data.bibNumber == resource.data.bibNumber &&
+          (!('pinCode' in request.resource.data) || !('pinCode' in resource.data) || request.resource.data.pinCode == resource.data.pinCode)
+        )
+      );
+      allow delete: if isAdmin() && isValidId(teamId);
+    }
+
+    // Scan Events Collection - records checkpoint scans, must be unique (anti-duplicate) and match team event
+    match /scanEvents/{scanId} {
+      allow get, list: if true;
+      allow create: if isValidId(scanId) && isValidScan(request.resource.data) && (
+        isAdmin() || (
+          !exists(/databases/$(database)/documents/scanEvents/$(scanId)) &&
+          request.resource.data.status == 'verified' &&
+          request.resource.data.eventId == get(/databases/$(database)/documents/teams/$(request.resource.data.teamId)).data.eventId
+        )
+      );
+      allow update: if isAdmin() && isValidId(scanId);
+      allow delete: if isAdmin() && isValidId(scanId);
+    }
+
+    // Challenge Submissions Collection - viewable by leaderboard/gallery, must match team event
+    match /challengeSubmissions/{submissionId} {
+      allow get, list: if true;
+      allow create: if isValidId(submissionId) && isValidSubmission(request.resource.data) && 
+        request.resource.data.status == 'pending' &&
+        request.resource.data.eventId == get(/databases/$(database)/documents/teams/$(request.resource.data.teamId)).data.eventId;
+      allow update: if isAdmin() && isValidId(submissionId) && isValidSubmission(request.resource.data);
+      allow delete: if isAdmin() && isValidId(submissionId);
+    }
+
+    // Score Entries Collection - restricted to authorized admin / judge
+    match /scoreEntries/{scoreId} {
+      allow get, list: if true;
+      allow write: if isAdmin() && isValidId(scoreId);
+    }
+
+    // Activity Logs Collection
+    match /activityLogs/{logId} {
+      allow get, list: if true;
+      allow create: if isValidId(logId) && isValidLog(request.resource.data);
+      allow update, delete: if isAdmin() && isValidId(logId);
+    }
+
+    // Broadcasts Collection
+    match /broadcasts/{broadcastId} {
+      allow get, list: if true;
+      allow create: if (isAdmin() || !exists(/databases/$(database)/documents/broadcasts/$(broadcastId))) && isValidId(broadcastId) && isValidBroadcast(request.resource.data);
+      allow update, delete: if isAdmin() && isValidId(broadcastId);
+    }
+
+    // SOS Alerts Collection - open read for dashboard emergency monitoring
+    match /sosAlerts/{alertId} {
+      allow get, list: if true;
+      allow create, update: if isValidId(alertId) && isValidSos(request.resource.data);
+      allow delete: if isAdmin() && isValidId(alertId);
+    }
+
+    // Team Private Credentials Collection - strictly denied for public client read/write (P0-A)
+    match /teamCredentials/{credentialId} {
+      allow read, write: if false;
+    }
+  }
+}

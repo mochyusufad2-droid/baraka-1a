@@ -1,0 +1,245 @@
+{
+  "entities": {
+    "EventItem": {
+      "title": "EventItem",
+      "description": "Represents an orienteering, amazing race, or outbound race event.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 200 },
+        "subtitle": { "type": "string", "maxLength": 300 },
+        "eventType": { "type": "string", "enum": ["orienteering", "amazing_race", "outbound", "school", "indoor_qr"] },
+        "status": { "type": "string", "enum": ["active", "draft", "completed"] },
+        "date": { "type": "string", "maxLength": 50 },
+        "timeRange": { "type": "string", "maxLength": 50 },
+        "location": { "type": "string", "maxLength": 200 },
+        "totalTeams": { "type": "number" },
+        "totalCheckpoints": { "type": "number" },
+        "timeLimitMinutes": { "type": "number" },
+        "organizerName": { "type": "string", "maxLength": 100 },
+        "description": { "type": "string", "maxLength": 2000 },
+        "bannerGradient": { "type": "string", "maxLength": 100 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "title", "status", "eventType"]
+    },
+    "Checkpoint": {
+      "title": "Checkpoint",
+      "description": "A race checkpoint with GPS coordinates, QR code, and point value.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "eventId": { "type": "string", "maxLength": 128 },
+        "number": { "type": "number" },
+        "name": { "type": "string", "maxLength": 100 },
+        "locationName": { "type": "string", "maxLength": 150 },
+        "qrCodeValue": { "type": "string", "maxLength": 100 },
+        "points": { "type": "number" },
+        "clue": { "type": "string", "maxLength": 500 },
+        "challengeType": { "type": "string", "enum": ["qr_only", "riddle", "photo", "physical_game", "quiz"] },
+        "challengeDescription": { "type": "string", "maxLength": 1000 },
+        "isMandatory": { "type": "boolean" },
+        "autoLockMinutes": { "type": "number" },
+        "status": { "type": "string", "enum": ["locked", "active", "completed"] }
+      },
+      "required": ["id", "eventId", "number", "name", "qrCodeValue", "points"]
+    },
+    "Team": {
+      "title": "Team",
+      "description": "A racing team participating in an event with score and bib identification.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "eventId": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 100 },
+        "category": { "type": "string", "maxLength": 50 },
+        "bibNumber": { "type": "string", "maxLength": 20 },
+        "pinCode": { "type": "string", "maxLength": 10 },
+        "checkpointsCompleted": { "type": "number" },
+        "totalCheckpoints": { "type": "number" },
+        "currentCheckpointId": { "type": "string", "maxLength": 128 },
+        "points": { "type": "number" },
+        "bonusPoints": { "type": "number" },
+        "penaltyPoints": { "type": "number" },
+        "penaltyMinutes": { "type": "number" },
+        "totalScore": { "type": "number" },
+        "status": { "type": "string", "enum": ["ready", "racing", "finished", "dnf"] },
+        "lastPosName": { "type": "string", "maxLength": 100 },
+        "lastUpdated": { "type": "string", "maxLength": 50 },
+        "lastCheckinTimestamp": { "type": "number" }
+      },
+      "required": ["id", "eventId", "name", "bibNumber", "pinCode", "points", "totalScore", "status"]
+    },
+    "ScanEvent": {
+      "title": "ScanEvent",
+      "description": "A QR or GPS scan event submitted by a team or logged by organizers.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "eventId": { "type": "string", "maxLength": 128 },
+        "teamId": { "type": "string", "maxLength": 128 },
+        "checkpointId": { "type": "string", "maxLength": 128 },
+        "checkpointName": { "type": "string", "maxLength": 100 },
+        "qrCodeValue": { "type": "string", "maxLength": 100 },
+        "pointsAwarded": { "type": "number" },
+        "scannedByUid": { "type": "string", "maxLength": 128 },
+        "status": { "type": "string", "enum": ["pending", "verified", "rejected"] },
+        "method": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["id", "eventId", "teamId", "checkpointId", "scannedByUid", "status"]
+    },
+    "ChallengeSubmission": {
+      "title": "ChallengeSubmission",
+      "description": "Submission for photo, quiz, or physical game at a checkpoint.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "eventId": { "type": "string", "maxLength": 128 },
+        "teamId": { "type": "string", "maxLength": 128 },
+        "teamName": { "type": "string", "maxLength": 100 },
+        "checkpointId": { "type": "string", "maxLength": 128 },
+        "checkpointName": { "type": "string", "maxLength": 100 },
+        "submittedAt": { "type": "string", "maxLength": 50 },
+        "type": { "type": "string", "enum": ["photo", "video", "quiz_answer", "physical_verification", "penalty"] },
+        "contentUrl": { "type": "string", "maxLength": 2000 },
+        "contentText": { "type": "string", "maxLength": 1000 },
+        "status": { "type": "string", "enum": ["pending", "approved", "rejected"] },
+        "scoreGiven": { "type": "number" },
+        "penaltyMinutesAdded": { "type": "number" },
+        "judgeNote": { "type": "string", "maxLength": 500 }
+      },
+      "required": ["id", "eventId", "teamId", "checkpointId", "status", "type"]
+    },
+    "ScoreEntry": {
+      "title": "ScoreEntry",
+      "description": "An auditable score or penalty ledger record.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "eventId": { "type": "string", "maxLength": 128 },
+        "teamId": { "type": "string", "maxLength": 128 },
+        "checkpointId": { "type": "string", "maxLength": 128 },
+        "score": { "type": "number" },
+        "type": { "type": "string", "enum": ["checkpoint", "bonus", "penalty", "manual_judge"] },
+        "awardedBy": { "type": "string", "maxLength": 128 },
+        "reason": { "type": "string", "maxLength": 300 }
+      },
+      "required": ["id", "eventId", "teamId", "score", "type"]
+    },
+    "ActivityLog": {
+      "title": "ActivityLog",
+      "description": "System, checkin, or judge activity log entry.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "eventId": { "type": "string", "maxLength": 128 },
+        "time": { "type": "string", "maxLength": 50 },
+        "message": { "type": "string", "maxLength": 500 },
+        "type": { "type": "string", "enum": ["checkin", "judge", "system", "registration"] }
+      },
+      "required": ["id", "eventId", "time", "message", "type"]
+    },
+    "RaceBroadcast": {
+      "title": "RaceBroadcast",
+      "description": "Urgent broadcast announcement sent to all active race devices.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "eventId": { "type": "string", "maxLength": 128 },
+        "time": { "type": "string", "maxLength": 50 },
+        "title": { "type": "string", "maxLength": 150 },
+        "message": { "type": "string", "maxLength": 1000 },
+        "type": { "type": "string", "enum": ["urgent", "info", "weather", "clue"] },
+        "author": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["id", "eventId", "title", "message", "type"]
+    },
+    "SosAlert": {
+      "title": "SosAlert",
+      "description": "Emergency SOS distress call from a participant team in the field.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "eventId": { "type": "string", "maxLength": 128 },
+        "teamId": { "type": "string", "maxLength": 128 },
+        "teamName": { "type": "string", "maxLength": 100 },
+        "bibNumber": { "type": "string", "maxLength": 20 },
+        "timestamp": { "type": "number" },
+        "timeString": { "type": "string", "maxLength": 50 },
+        "status": { "type": "string", "enum": ["active", "resolved"] }
+      },
+      "required": ["id", "eventId", "teamId", "teamName", "bibNumber", "status"]
+    },
+    "Admin": {
+      "title": "Admin",
+      "description": "Authorized administrator or organizer reference document.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 150 },
+        "role": { "type": "string", "enum": ["admin", "organizer", "judge"] }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "User": {
+      "title": "User",
+      "description": "Authenticated user profile and role metadata.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 150 },
+        "displayName": { "type": "string", "maxLength": 100 },
+        "teamId": { "type": "string", "maxLength": 128 },
+        "role": { "type": "string", "enum": ["admin", "organizer", "judge", "participant"] }
+      },
+      "required": ["uid"]
+    }
+  },
+  "firestore": {
+    "/events/{eventId}": {
+      "schema": "EventItem",
+      "description": "Race and orienteering events catalog."
+    },
+    "/checkpoints/{checkpointId}": {
+      "schema": "Checkpoint",
+      "description": "Checkpoints linked to specific race events."
+    },
+    "/teams/{teamId}": {
+      "schema": "Team",
+      "description": "Teams participating in race events."
+    },
+    "/scanEvents/{scanId}": {
+      "schema": "ScanEvent",
+      "description": "Immutable scan records logged during the event."
+    },
+    "/challengeSubmissions/{submissionId}": {
+      "schema": "ChallengeSubmission",
+      "description": "Submissions for challenges, quizzes, and photo tasks."
+    },
+    "/scoreEntries/{scoreId}": {
+      "schema": "ScoreEntry",
+      "description": "Auditable score adjustments and point logs."
+    },
+    "/activityLogs/{logId}": {
+      "schema": "ActivityLog",
+      "description": "Live activity logs feed for organizers and participants."
+    },
+    "/broadcasts/{broadcastId}": {
+      "schema": "RaceBroadcast",
+      "description": "Broadcast emergency or race status notifications."
+    },
+    "/sosAlerts/{alertId}": {
+      "schema": "SosAlert",
+      "description": "Emergency alerts dispatched by teams in the field."
+    },
+    "/admins/{adminId}": {
+      "schema": "Admin",
+      "description": "Collection of verified administrator UIDs."
+    },
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles mapping UIDs to teams and roles."
+    }
+  }
+}
